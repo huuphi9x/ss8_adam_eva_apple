@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADAM & EVA</title>
+</head>
+<body>
+<script>
+    let Apple = function (weight) {
+        this.weight = 10;
+
+        this.decrease = function () {
+            if (this.weight > 0) {
+                this.weight--;
+            }
+        };
+
+        this.isEmpty = function () {
+            return this.weight <= 0;
+        };
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.setWeight = function (weight) {
+            this.weight = weight;
+        };
+    };
+    let Human = function (name, gender, weight) {
+        this.name = name;
+        this.gender = gender;
+        this.weight = weight;
+
+        this.isMale = function () {
+            if (this.gender == "male") {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        this.setGender = function (gender) {
+            this.gender = gender;
+        };
+
+        this.checkApple = function () {
+            return !apple.isEmpty();
+        };
+
+        this.eat = function (apple) {
+            apple.decrease();
+            this.weight++;
+        };
+
+        this.say = function (message) {
+            alert(this.name + " say: " + message);
+        };
+
+        this.getName = function () {
+            return this.name;
+        };
+
+        this.setName = function (name) {
+            this.name = name;
+        };
+
+        this.getWeight = function () {
+            return this.weight;
+        };
+
+        this.setWeight = function (weight) {
+            this.weight = weight;
+        };
+    }
+    let adam = new Human('Adam', 'male', 50);
+    let eva = new Human('Eva', 'female', 40);
+    let apple = new Apple();
+    if (adam.isMale) {
+        adam.say(" Tôi là con trai");
+    } else {
+        adam.say(" Tôi là con gái");
+    }
+    if (eva.isMale) {
+        eva.say("Tôi là con gái");
+    } else {
+        eva.say("Tôi là con trai");
+    }
+
+    let count = 1;
+    while (apple.weight > 0) {
+        if (count == 1) {
+            adam.eat(apple);
+            count = 2;
+            if (apple.getWeight() == 0) {
+                alert("Hết táo");
+                break;
+            }
+            alert("Adam ăn rồi, Eva ăn đi! " + "táo còn " + apple.getWeight() + " miếng");
+        } else {
+            eva.eat(apple);
+            count = 1;
+            if (apple.getWeight() == 0) {
+                alert("Hết táo");
+                break;
+            }
+            alert("Eva ăn rồi, Adam ăn đi! " + "táo còn " + apple.getWeight() + " miếng");
+        }
+
+
+    }
+    alert("Adam nặng " + adam.getWeight());
+    alert("Eva nặng " + eva.getWeight());
+
+</script>
+</body>
+</html>
